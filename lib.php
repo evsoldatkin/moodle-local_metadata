@@ -154,6 +154,14 @@ function local_metadata_save_data($new, $contextlevel) {
             $formfield->edit_save_data($new);
         }
     }
+    //Core Fix Start
+    if ($contextlevel == CONTEXT_COURSE)
+    {
+        global $CFG;
+        require_once $CFG->dirroot.'/local/edu/locallib.php';
+        \local_edu\Event::CourseChanged($new->id);
+    }
+    //Core Fix Finish
 }
 
 /**

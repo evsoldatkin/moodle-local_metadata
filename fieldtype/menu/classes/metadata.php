@@ -64,7 +64,10 @@ class metadata extends \local_metadata\fieldtype\metadata {
             $this->options[''] = get_string('choose').'...';
         }
         foreach ($options as $key => $option) {
-            $this->options[$option] = format_string($option); // Multilang formatting with filters.
+            //Core Fix Start
+            //$this->options[$option] = format_string($option); // Multilang formatting with filters.
+            $this->options[$key] = format_string($option);
+            //Core Fix Finish
         }
 
         // Set the data key.
